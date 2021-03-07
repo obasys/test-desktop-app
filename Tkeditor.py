@@ -8,7 +8,7 @@ import os
 root = Tk()
 root.geometry('800x500')
 root.title('Untitled - File Editor Based on Tkinter')
-root.iconbitmap('icons/pypad.ico')
+# root.iconbitmap('icons/pypad.ico')
 
 def popup(event):
     cmenu.tk_popup(event.x_root, event.y_root, 0)
