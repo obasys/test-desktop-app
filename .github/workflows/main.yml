@@ -1,18 +1,23 @@
-name: PyInstaller Windows
-  jobs:
-  # This workflow contains a single job called "build"
-    build:
-      # The type of runner that the job will run on
-      runs-on: ubuntu-latest
+name: Package Application with Pyinstaller
 
-      # Steps represent a sequence of tasks that will be executed as part of the job
-      steps:
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
-        with:
-          # Directory containing source code (optional requirements.txt).
-          path: .
-        uses: actions/upload-artifact@v2
-          with:
-            name: Test_build
-            path: dist/windows
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
+      with:
+        path: .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: TestBuild
+        path: dist/windows
